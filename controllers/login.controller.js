@@ -51,9 +51,11 @@ exports.getUserByEmail = async (req, res, next) => {
     }
   } catch (error) {
     console.error(error.message);
-    res
-      .status(500)
-      .json({ status: "Failed", message: "Internal Server Error" });
+    res.status(500).json({
+      status: "Failed",
+      message: "Internal Server Error",
+      error: error.message,
+    });
     next(error);
   }
 };
